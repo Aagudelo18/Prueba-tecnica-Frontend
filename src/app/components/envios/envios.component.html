@@ -1,1 +1,212 @@
-<p>envios works!</p>
+<div style="padding: 50px;">
+    <h1 class="text-center">Envios</h1>
+    <br>
+
+    <div class="text mb-3">
+    <button class="btn btn-primary" (click)="nuevoEnvio()">
+    Nuevo Envío
+    </button>
+    </div>
+
+<div class="card p-3 mb-4" *ngIf="mostrarFormulario">
+
+        <div class="row g-2">
+
+        <div class="col">
+        <input class="form-control"
+        placeholder="Numero guia"
+        [(ngModel)]="envio.numero_guia">
+        </div>
+
+        <div class="col">
+        <select class="form-control" [(ngModel)]="envio.cliente_id">
+
+        <option value="">Seleccione cliente</option>
+
+        <option *ngFor="let cliente of clientesList" [value]="cliente.id">
+        {{cliente.nombre}}
+        </option>
+
+        </select>
+        </div>
+
+        <div class="col">
+        <select class="form-control" [(ngModel)]="envio.producto_id">
+
+        <option value="">Seleccione producto</option>
+
+        <option *ngFor="let producto of productosList" [value]="producto.id">
+        {{producto.nombre}}
+        </option>
+
+        </select>
+        </div>
+
+        <div class="col">
+        <input class="form-control"
+        type="number"
+        placeholder="Cantidad"
+        [(ngModel)]="envio.cantidad_producto">
+        </div>
+
+        <div class="col">
+        <input class="form-control"
+        type="number"
+        placeholder="Precio envio"
+        [(ngModel)]="envio.precio_envio">
+        </div>
+
+        </div>
+
+        <br>
+
+        <div class="row g-2">
+
+        <div class="col">
+        <input class="form-control"
+        type="date"
+        [(ngModel)]="envio.fecha_registro">
+        </div>
+
+        <div class="col">
+        <input class="form-control"
+        type="date"
+        [(ngModel)]="envio.fecha_entrega">
+        </div>
+
+        <div class="col">
+        <select class="form-control" [(ngModel)]="envio.tipo_envio">
+
+        <option value="">Tipo envío</option>
+        <option value="terrestre">Terrestre</option>
+        <option value="maritimo">Marítimo</option>
+
+        </select>
+        </div>
+
+        </div>
+
+        <br>
+
+        <div *ngIf="envio.tipo_envio=='terrestre'">
+
+        <h5 class="mt-3">Logística terrestre</h5>
+
+        <div class="row g-2">
+
+        <div class="col">
+        <input class="form-control"
+        placeholder="Placa vehiculo"
+        [(ngModel)]="envio.logistica.placa_vehiculo">
+        </div>
+
+        <div class="col">
+        <select class="form-control"
+        [(ngModel)]="envio.logistica.bodega_id">
+
+        <option value="">Seleccione bodega</option>
+
+        <option *ngFor="let bodega of bodegasList" [value]="bodega.id">
+        {{bodega.nombre}}
+        </option>
+
+        </select>
+        </div>
+
+        </div>
+
+        </div>
+        <div *ngIf="envio.tipo_envio=='maritimo'">
+
+        <h5 class="mt-3">Logística marítima</h5>
+
+        <div class="row g-2">
+
+        <div class="col">
+        <input class="form-control"
+        placeholder="Numero flota"
+        [(ngModel)]="envio.logistica.numero_flota">
+        </div>
+
+        <div class="col">
+        <select class="form-control"
+        [(ngModel)]="envio.logistica.puerto_id">
+
+        <option value="">Seleccione puerto</option>
+
+        <option *ngFor="let puerto of puertosList" [value]="puerto.id">
+        {{puerto.nombre}}
+        </option>
+
+        </select>
+        </div>
+
+        </div>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+        <div class="col">
+
+        <button *ngIf="!editando"
+        class="btn btn-success"
+        (click)="crearEnvio()">
+        Crear
+        </button>
+
+        <button *ngIf="editando"
+        class="btn btn-warning"
+        (click)="actualizarEnvio()">
+        Actualizar
+        </button>
+
+        </div>
+
+        </div>
+
+        </div>
+
+    <table class="table table-hover">
+       <thead class="table-danger">
+        <tr>
+            <th scope="col">Guía</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantida Producto</th>
+            <th scope="col">Precio Envios</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Logística</th>
+            <th scope="col">Acciones</th>
+       </tr>
+
+    </thead>
+    <tbody>
+       <tr *ngFor="let envio of enviosList">
+            <td>{{envio.numero_guia}}</td>
+            <td>{{obtenerNombreCliente(envio.cliente_id)}}</td>
+            <td>{{obtenerNombreProducto(envio.producto_id)}}</td>
+            <td>{{envio.cantidad_producto}}</td>
+            <td>{{envio.precio_envio}}</td>
+            <td>{{envio.tipo_envio}}</td>
+            <td>{{obtenerLogistica(envio)}}</td>
+            <td>
+            <button
+            class="btn btn-warning btn-sm"
+            (click)="editarEnvio(envio)">
+            Editar
+            </button>
+            |
+            <button
+            class="btn btn-danger btn-sm"
+            (click)="eliminarEnvio(envio._id!)">
+            Eliminar
+            </button>
+            </td>
+
+        </tr>
+    </tbody>
+    </table>
+</div>

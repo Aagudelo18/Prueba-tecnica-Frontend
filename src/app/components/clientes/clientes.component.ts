@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
 import {  ClientesInterface } from '../../interface/clientes.interface';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-clientes',
   standalone: true,
@@ -26,7 +28,7 @@ export class ClientesComponent implements OnInit {
     editando:boolean = false;
     mostrarFormulario:boolean = false;
 
-    constructor(private clientesService:ClientesService){}
+    constructor(private clientesService:ClientesService,private router: Router){}
 
     ngOnInit(): void {
       this.getClientes()
@@ -128,6 +130,10 @@ export class ClientesComponent implements OnInit {
 
     }
   }
+
+  volverHome(){
+  this.router.navigate(['/']);
+}
 
 
 }

@@ -4,6 +4,8 @@ import { BodegasInterface } from '../../interface/bodegas.interface';
 import { BodegasService } from '../../services/bodegas.service';
 import { FormsModule } from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-bodegas',
   standalone: true,
@@ -24,7 +26,7 @@ export class BodegasComponent implements OnInit {
    editando:boolean = false;
    mostrarFormulario:boolean = false
   
-  constructor(private bodegasService:BodegasService){}
+  constructor(private bodegasService:BodegasService,private router: Router){}
     
   ngOnInit(): void {
     this.getBodegas()
@@ -122,6 +124,10 @@ export class BodegasComponent implements OnInit {
       })
 
     }
+  }
+
+  volverHome(){
+  this.router.navigate(['/']);
   }
 
 }

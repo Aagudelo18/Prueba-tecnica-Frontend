@@ -14,6 +14,8 @@ import { ProductosInterface } from '../../interface/productos.interface';
 import { BodegasInterface } from '../../interface/bodegas.interface';
 import { PuertosInterface } from '../../interface/puertos.interface';
 
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -53,7 +55,8 @@ export class EnviosComponent implements OnInit {
     private clientesService:ClientesService,
     private productosService:ProductosService,
     private bodegasService:BodegasService,
-    private puertosService:PuertosService
+    private puertosService:PuertosService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -345,6 +348,10 @@ obtenerLogistica(envio:any): string {
   }
 
   return ""
+}
+
+volverHome(){
+  this.router.navigate(['/']);
 }
 
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PuertosService } from '../../services/puertos.service';
 import { PuertosInterface } from '../../interface/puertos.interface';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-puertos',
@@ -25,7 +26,7 @@ export class PuertosComponent implements OnInit {
       mostrarFormulario:boolean = false;
   
 
-  constructor(private puertosService:PuertosService){}
+  constructor(private puertosService:PuertosService,private router: Router){}
   
   ngOnInit(): void {
     this.getPuertos()
@@ -123,4 +124,10 @@ export class PuertosComponent implements OnInit {
 
     }
   }
+
+  volverHome(){
+  this.router.navigate(['/']);
+ }
+
+
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductosService } from '../../services/productos.service';
 import { ProductosInterface } from '../../interface/productos.interface';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -23,7 +24,7 @@ export class ProductosComponent implements OnInit {
       editando:boolean = false;
       mostrarFormulario:boolean = false;
 
-  constructor(private productosService:ProductosService){}
+  constructor(private productosService:ProductosService,private router: Router){}
 
   ngOnInit(): void {
     this.getProductos()
@@ -118,5 +119,9 @@ export class ProductosComponent implements OnInit {
 
     }
   }
+
+  volverHome(){
+  this.router.navigate(['/']);
+ }
 
 }

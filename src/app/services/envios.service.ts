@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EnviosService {
 
-  API_URL:string = "http://127.0.0.1:8000/envios";
+  API_URL:string = "https://prueba-tecnica-backend-u2pv.onrender.com/envios";
 
   constructor(private http:HttpClient) { }
 

@@ -8,7 +8,7 @@ import { ProductosInterface } from '../interface/productos.interface';
 })
 export class ProductosService {
 
-  API_URL:string = "http://127.0.0.1:8000/productos";
+  API_URL:string = "https://prueba-tecnica-backend-u2pv.onrender.com/productos";
   constructor(private httpClient: HttpClient) { }
    
   getProductos():Observable <ProductosInterface[]> {

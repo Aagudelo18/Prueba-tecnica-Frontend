@@ -8,7 +8,7 @@ import { PuertosInterface } from '../interface/puertos.interface';
 })
 export class PuertosService {
 
-  API_URL:string = "http://127.0.0.1:8000/puertos";
+  API_URL:string = "https://prueba-tecnica-backend-u2pv.onrender.com/puertos";
   constructor(private httpClient: HttpClient) { }
      
   getPuertos():Observable <PuertosInterface[]> {

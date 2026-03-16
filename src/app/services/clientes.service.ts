@@ -7,7 +7,7 @@ import { ClientesInterface } from '../interface/clientes.interface';
   providedIn: 'root'
 })
 export class ClientesService {
-  API_URL:string = "http://127.0.0.1:8000/clientes";
+  API_URL:string = "https://prueba-tecnica-backend-u2pv.onrender.com/clientes";
   constructor(private httpClient: HttpClient) { }
    
   getClientes():Observable <ClientesInterface[]> {

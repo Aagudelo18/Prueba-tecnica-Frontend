@@ -8,7 +8,7 @@ import { BodegasInterface } from '../interface/bodegas.interface';
 })
 export class BodegasService {
 
-  API_URL:string = "http://127.0.0.1:8000/bodegas";
+  API_URL:string = "https://prueba-tecnica-backend-u2pv.onrender.com/bodegas";
     constructor(private httpClient: HttpClient) { }
      
   getBodegas():Observable <BodegasInterface[]> {

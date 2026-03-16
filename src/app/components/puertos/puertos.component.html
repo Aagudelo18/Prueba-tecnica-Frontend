@@ -1,0 +1,24 @@
+<div style="padding: 50px;">
+ <h1 class="text-center">Puertos</h1>
+ <br>
+ <table class="table table-hover">
+    <thead class="table-danger">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Ciudadr</th>
+            <th scope="col">Pais</th>    
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of puertosList; let i = index">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.nombre}}</td>
+            <td>{{item.ciudad}}</td>
+            <td>{{item.pais}}</td>
+        </tr>
+    </tbody>
+
+ </table>
+</div>

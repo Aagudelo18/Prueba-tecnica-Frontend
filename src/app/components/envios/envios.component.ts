@@ -351,7 +351,7 @@ obtenerLogistica(envio:any): string {
 }
 
 volverHome(){
-  this.router.navigate(['/']);
+  this.router.navigate(['/home']);
 }
 
 }

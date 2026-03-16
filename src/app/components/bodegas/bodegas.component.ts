@@ -127,7 +127,7 @@ export class BodegasComponent implements OnInit {
   }
 
   volverHome(){
-  this.router.navigate(['/']);
+  this.router.navigate(['/home']);
   }
 
 }

@@ -132,7 +132,7 @@ export class ClientesComponent implements OnInit {
   }
 
   volverHome(){
-  this.router.navigate(['/']);
+  this.router.navigate(['/home']);
 }
 
 

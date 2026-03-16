@@ -1,2 +1,13 @@
+<div class="d-flex justify-content-end p-3">
 
-<router-outlet />
+<button
+*ngIf="authService.estaLogueado()"
+class="btn btn-danger ms-auto"
+(click)="logout()"
+>
+Cerrar sesión
+</button>
+
+</div>
+
+<router-outlet></router-outlet>

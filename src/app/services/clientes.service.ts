@@ -13,4 +13,16 @@ export class ClientesService {
   getClientes():Observable <ClientesInterface[]> {
     return this.httpClient.get<ClientesInterface[]>(this.API_URL);
   }
+
+  createCliente(cliente:ClientesInterface):Observable<ClientesInterface>{
+    return this.httpClient.post<ClientesInterface>(this.API_URL,cliente);
+  }
+
+  updateCliente(id:string,cliente:ClientesInterface):Observable<ClientesInterface>{
+    return this.httpClient.put<ClientesInterface>(`${this.API_URL}/${id}`,cliente);
+  }
+
+  deleteCliente(id:string):Observable<any>{
+    return this.httpClient.delete(`${this.API_URL}/${id}`);
+  }
 }

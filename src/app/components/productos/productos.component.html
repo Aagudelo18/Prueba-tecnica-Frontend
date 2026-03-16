@@ -1,20 +1,65 @@
 <div style="padding: 50px;">
  <h1 class="text-center">Productos</h1>
  <br>
+ <div class="text mb-3">
+    <button class="btn btn-primary" (click)="nuevoProducto()">
+    Nuevo Producto
+    </button>
+    </div>
+
+<div class="card p-3 mb-4" *ngIf="mostrarFormulario">
+
+    <div class="row">
+
+    <div class="col">
+    <input class="form-control" placeholder="Nombre" [(ngModel)]="producto.nombre">
+    </div>
+
+    <div class="col">
+    <input class="form-control" placeholder="Descripción" [(ngModel)]="producto.descripcion">
+    </div>
+
+    <div class="col">
+
+    <button *ngIf="!editando" class="btn btn-success" (click)="crearProducto()">
+    Crear
+    </button>
+
+    <button *ngIf="editando" class="btn btn-warning" (click)="actualizarProducto()">
+    Actualizar
+    </button>
+
+    </div>
+
+    </div>
+</div>
+
  <table class="table table-hover">
     <thead class="table-danger">
         <tr>
-            <th scope="col">Id</th>
+            <!-- <th scope="col">Id</th> -->
             <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>    
+            <th scope="col">Descripción</th>
+            <th scope="col">Acciones</th>     
         </tr>
 
     </thead>
     <tbody>
         <tr *ngFor="let item of productosList; let i = index">
-            <th scope="row">{{item.id}}</th>
+            <!-- <th scope="row">{{item.id}}</th> -->
             <td>{{item.nombre}}</td>
             <td>{{item.descripcion}}</td>
+            <td>
+            <button class="btn btn-warning btn-sm"
+            (click)="editarProducto(item)">
+            Editar
+            </button>
+            |
+            <button class="btn btn-danger btn-sm"
+            (click)="eliminarProducto(item.id)">
+            Eliminar
+            </button>
+            </td>
         </tr>
     </tbody>
 

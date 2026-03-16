@@ -14,4 +14,16 @@ export class PuertosService {
   getPuertos():Observable <PuertosInterface[]> {
     return this.httpClient.get<PuertosInterface[]>(this.API_URL);
   }
+
+  createPuerto(puerto:PuertosInterface):Observable<PuertosInterface>{
+      return this.httpClient.post<PuertosInterface>(this.API_URL,puerto);
+    }
+  
+  updatePuerto(id:string,puerto:PuertosInterface):Observable<PuertosInterface>{
+      return this.httpClient.put<PuertosInterface>(`${this.API_URL}/${id}`,puerto);
+    }
+  
+  deletePuerto(id:string):Observable<any>{
+      return this.httpClient.delete(`${this.API_URL}/${id}`);
+    }
 }

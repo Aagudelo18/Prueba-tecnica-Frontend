@@ -15,4 +15,16 @@ export class ProductosService {
     return this.httpClient.get<ProductosInterface[]>(this.API_URL);
   }
 
+  createProducto(producto:ProductosInterface):Observable<ProductosInterface>{
+      return this.httpClient.post<ProductosInterface>(this.API_URL,producto);
+    }
+  
+  updateProducto(id:string,producto:ProductosInterface):Observable<ProductosInterface>{
+      return this.httpClient.put<ProductosInterface>(`${this.API_URL}/${id}`,producto);
+    }
+  
+  deleteProducto(id:string):Observable<any>{
+      return this.httpClient.delete(`${this.API_URL}/${id}`);
+    }
+
 }
